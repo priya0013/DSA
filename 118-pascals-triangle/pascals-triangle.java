@@ -7,9 +7,8 @@ class Solution {
                 if(j==0 || j==i){
                     cur.add(1);
                 }else{
-                    int le=l.get(i-1).get(j-1);
-                    int ri=l.get(i-1).get(j);
-                    cur.add(le+ri);
+                    
+                    cur.add(l.get(i-1).get(j-1)+l.get(i-1).get(j));
                 }
             }
                 l.add(cur);
