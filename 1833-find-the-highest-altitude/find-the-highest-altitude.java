@@ -1,15 +1,13 @@
 class Solution {
     public int largestAltitude(int[] gain) {
-        int cumulative=0;
         int max=0;
+        int sum=0;
         for(int i=0;i<gain.length;i++){
-           // gain[0]=0;
-            cumulative+=gain[i];
-            gain[i]=cumulative;
+           
+            sum+=gain[i];
+            gain[i]=sum;
         
-            if(gain[i]>max){
-                max=gain[i];
-            }
+            max=Math.max(max,sum);
         }
         
         return max;
