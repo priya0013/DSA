@@ -7,7 +7,7 @@ class Solution {
             if ((n & bit) != 0) {
                 ls.add(bit);
             }
-            bit <<= 1;
+            bit *= 2;
         }
         int res[]=new int[queries.length];
         for(int i=0;i<queries.length;i++){
