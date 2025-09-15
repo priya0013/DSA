@@ -7,7 +7,7 @@ public:
             double r1=(double)rec[i][0]/rec[i][1];
             mp[r1]++;
         }
-        for(pair<double,int> p:mp){
+        for(pair<double,long long> p:mp){
             long long n=p.second;
             cnt+=(n*(n-1)/2);
         }
