@@ -7,7 +7,8 @@ public:
             if(nums[i]==1){
                 cnt++;
                 maxsum=max(maxsum,cnt);
-            }else {
+            }
+            else {
                 cnt=0;
             }
         }
