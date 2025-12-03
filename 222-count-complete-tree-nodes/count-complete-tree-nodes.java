@@ -15,11 +15,9 @@
  */
 class Solution {
     public int countNodes(TreeNode root) {
-        TreeNode cur=root;
-        if(cur==null){
+        if(root==null){
             return 0;
-
         }
-        return countNodes(cur.left)+1+countNodes(cur.right);
+        return countNodes(root.left)+1+countNodes(root.right);
     }
 }
