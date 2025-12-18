@@ -11,8 +11,8 @@ public:
             dfs(land,r+1,c,mr,mc);
             dfs(land,r-1,c,mr,mc);
          
-        if(r>mr) mr=r;
-        if(c>mc) mc=c;
+        mr=max(mr,r);
+        mc=max(mc,c);
         }
     
     }
