@@ -1,20 +1,17 @@
 class Solution {
-    public int maxArea(int[] h) {
+    public int maxArea(int[] he) {
         int l=0;
-        int r=h.length-1;
-        int max=0;
+        int r=he.length-1;
+        int mx=0;
         while(l<r){
-            int width=r-l;  //7-1=6
-            int height=Math.min(h[l],h[r]);//min(1,6)=1
-            max=Math.max(max,(width*height));//6
-        
-        if(h[l]<h[r]){
-            l++;//move left(front)
-        }else{
-            r--;//move right(reverse)
+            int cur=Math.min(he[r],he[l]);
+            mx=Math.max(cur*(r-l),mx);
+            if(he[l]<he[r]){
+                l++;
+            }else{
+                r--;
+            }
         }
-        }
-        return max;
-
+        return mx;
     }
 }
