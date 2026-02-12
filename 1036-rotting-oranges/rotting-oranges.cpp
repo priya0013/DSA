@@ -1,52 +1,55 @@
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
-        int m=grid[0].size();
+        if(grid.empty() || grid[0].empty()) return 0; 
         int n=grid.size();
+        int m=grid[0].size();
+       
+        queue<pair<pair<int,int>,int>> q;
+        vector<vector<int>> visit(n, vector<int>(m, 0));
+
         int fresh=0;
-        queue<pair<int,int>> q;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
+                if(grid[i][j]==2){
+                    q.push({{i,j},0});
+                
+                    visit[i][j]=2;
+                }
+
+                
+            
                 if(grid[i][j]==1){
                     fresh++;
-                }else if(grid[i][j]==2){
-                    q.push({i,j});
+                }
+            
+            }
+        }
+        int cnt=0;
+        int dr[]={-1,0,1,0};
+        int dc[]={0,1,0,-1};
+        int rotten = 0;
+
+        while(!q.empty()){
+            int r=q.front().first.first;
+            int c=q.front().first.second;
+            int time=q.front().second;
+            cnt=max(cnt,time);
+            q.pop();
+            for(int i=0;i<4;i++){
+                int nr=r+dr[i];
+                int nc=c+dc[i];
+                if(nr>=0 && nr<n && nc>=0 && nc<m && visit[nr][nc]==0
+ && grid[nr][nc]==1){
+                    q.push({{nr,nc},time+1});
+                    visit[nr][nc]=2;
+                    
+                    rotten++;
                 }
             }
         }
-            int timer=0;
-            while(!q.empty() && fresh>0){
-                int size=q.size();
-                while(size-->0){
-                    pair<int,int> p=q.front();
-                    q.pop();
-                    int r=p.first;
-                    int c=p.second;
+        if(rotten!=fresh)return -1;
+        return cnt;
 
-                    if(c+1<m && grid[r][c+1]==1){
-                        grid[r][c+1]=2;
-                        q.push({r,c+1});
-                        fresh--;
-                    }
-                    if(c-1>=0 && grid[r][c-1]==1){
-                        grid[r][c-1]=2;
-                        q.push({r,c-1});
-                        fresh--;
-                    }
-                    if(r+1<n && grid[r+1][c]==1){
-                        grid[r+1][c]=2;
-                        q.push({r+1,c});
-                        fresh--;
-                    }
-                    if(r-1>=0 && grid[r-1][c]==1){
-                        grid[r-1][c]=2;
-                        q.push({r-1,c});
-                        fresh--;
-                    }
-                }
-                timer++;
-            }
-        
-        return fresh==0?timer:-1;
     }
 };
