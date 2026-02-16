@@ -1,9 +1,10 @@
 class Solution {
     public int reverseBits(int n) {
-        int rev=Integer.reverse(n);
-        String bin=Integer.toBinaryString(rev);
-        int res=Integer.parseInt(bin,2);
-        return res;
-
+        int ans=0;
+        for(int i=0;i<32;i++){
+            ans=(ans<<1)|(n&1);
+            n>>=1;
+        }
+        return ans;
     }
 }
