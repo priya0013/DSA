@@ -1,9 +1,9 @@
 class Solution {
     public int[] sortedSquares(int[] nums) {
-        int sq=0;
-        for(int i=0;i<nums.length;i++){
-            sq=nums[i]*nums[i];
-            nums[i]=sq;
+        int i=0;
+        for(int x:nums){
+            nums[i]=x*x;
+            i++;
         }
         Arrays.sort(nums);
         return nums;
