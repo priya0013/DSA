@@ -1,18 +1,19 @@
 class Solution {
     public int gcdOfOddEvenSums(int n) {
-        int sumo=0;
-        int sume=0;
-        for(int i=0;i<n;i++){
-                sumo+=2*i;
-          
-                sume+=2*i+1;
-           
-            
+        int sumodd=0;
+        int sumeven=0;
+        for(int i=1;i<=n;i++){
+            sumodd+=(2*i)-1;
+            sumeven+=(2*i);
         }
-       return gcd(sumo,sume);
-    }
-    private int gcd(int a, int b) {
-        if (b == 0) return a;
-        return gcd(b, a % b);
+        
+       
+        
+        while(sumeven!=0){
+            int temp=sumeven;
+            sumeven=sumodd%sumeven;
+            sumodd=temp;
+        }
+        return sumodd;
     }
 }
