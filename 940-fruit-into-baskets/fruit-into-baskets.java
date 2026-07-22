@@ -1,29 +1,23 @@
 class Solution {
+
     public int totalFruit(int[] fruits) {
-         int n = fruits.length;
-        int last = -1, secondLast = -1;
-        int last_c = 0, currMax = 0, max = 0;
-
-        for (int i = 0; i < n; i++) {
-            int fruit = fruits[i];
-
-            if (fruit == last || fruit == secondLast) {
-                currMax++;
-            } else {
-                currMax = last_c + 1;
+        HashMap<Integer,Integer> mp=new HashMap<>();
+        int l=0;
+        int max=0;
+        int r=0;
+        while(r<fruits.length){
+            mp.put(fruits[r],mp.getOrDefault(fruits[r],0)+1);
+            while(mp.size()>2){
+                int fru=fruits[l];
+                mp.put(fru,mp.get(fru)-1);
+                if(mp.get(fru)==0){
+                    mp.remove(fru);
+                }
+                l++;
             }
-
-            if (fruit == last) {
-                last_c++;
-            } else {
-                last_c = 1;
-                secondLast = last;
-                last = fruit;
-            }
-
-            max = Math.max(max, currMax);
+            r++;
+            max=Math.max(max,r-l+1);
         }
-
-        return max;
+        return max-1;
     }
 }
