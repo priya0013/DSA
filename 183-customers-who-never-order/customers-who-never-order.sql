@@ -1,5 +1,3 @@
 # Write your MySQL query statement below
-select c.name as Customers
-from customers c
-where id not in (select customerId
-from orders);
+select name as Customers from customers
+where id not in(select customerId from orders);
