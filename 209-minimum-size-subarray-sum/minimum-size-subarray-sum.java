@@ -1,16 +1,20 @@
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
+        //ithu sliding window than 
+        // apo enna panuna l and r pointer la eduthu flexible size ku window va shrink and expand pananu ok 
+        int l=0;
         int sum=0;
-        int ans=Integer.MAX_VALUE;
-        int i=0;
-        for(int j=0;j<nums.length;j++){
-            
-            sum+=nums[j];
+        //inga min_len na minimum length la than substring irukanu so,min
+        int min_len=Integer.MAX_VALUE;
+        for(int r=0;r<nums.length;r++){
+            sum+=nums[r];
             while(sum>=target){
-                 ans=Math.min(ans,j-i+1);
-                 sum-=nums[i++];
+                //window size minimum edukanum
+                min_len=Math.min(min_len,r-l+1);
+                //if window size expand aana left element ahh remove shrink aagum
+                sum=sum-nums[l++];
             }
         }
-        return ans==Integer.MAX_VALUE?0:ans;
+        return min_len==Integer.MAX_VALUE?0:min_len;
     }
 }
