@@ -23,15 +23,15 @@ public class Solution {
             s2.push(temp);
             temp=temp.next;
         }
-        ListNode inter=null;
+        ListNode c=null;
         while(!s1.isEmpty() && !s2.isEmpty()){
             if(s1.peek()==s2.peek()){
-                inter=s1.pop();
+                c=s1.pop();
                 s2.pop();
             }else{
                 break;
             }
         }
-        return inter;
+        return c;
     }
 }
