@@ -14,7 +14,6 @@ class Solution {
         }
         if(Arrays.equals(a,b)){
             l.add(0);
-            
         }
         for(int i=pl;i<sl;i++){
             b[s.charAt(i-pl)-'a']--;
@@ -22,6 +21,7 @@ class Solution {
             if(Arrays.equals(a,b)){
                 l.add(i-pl+1);
             }
+
         }
         return l;
     }
