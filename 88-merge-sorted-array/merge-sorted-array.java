@@ -8,12 +8,12 @@ class Solution {
                 nums1[k]=nums1[i];
                 k--;
                 i--;
-            }
-            else{
+            }else{
                 nums1[k]=nums2[j];
                 k--;
                 j--;
             }
         }
+        
     }
 }
