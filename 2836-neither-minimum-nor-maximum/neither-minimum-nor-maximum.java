@@ -1,24 +1,17 @@
 class Solution {
     public int findNonMinOrMax(int[] nums) {
-        int max=Integer.MIN_VALUE;
-        int min=Integer.MAX_VALUE;
-        for(int x:nums){
-            if(x>max){
-                max=x;
-            }
-            if(x<min){
-                min=x;
-            }
-        }
-        if(nums.length<=2){
-            return -1;
-        }
-        int ans=0;
-        for(int i:nums){
-            if(i!=min && i!=max){
-                ans=i;
-            }
-        }
-        return ans;
+       PriorityQueue<Integer> pq1=new PriorityQueue<>();
+       PriorityQueue<Integer> pq2=new PriorityQueue<>(Collections.reverseOrder());
+       for(int x:nums){
+        pq1.offer(x);
+        pq2.offer(x);
+       }
+       pq1.poll();
+       pq2.poll();
+       if(nums.length<=2){
+        return -1;
+       }
+       return pq1.peek(); 
+
     }
 }
